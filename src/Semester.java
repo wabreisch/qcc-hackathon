@@ -14,9 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class Semester extends JPanel{
-	private JLabel logo, tuition,housing,books,supplies,dorm;
-	private TextField tft,tfh,tfb,tfs,tfd;
+	private JLabel logo, tuition,housing,books,supplies,dorm, total;
+	private TextField tft,tfh,tfb,tfs,tfd,tftotal;
 	private JButton nextButton, backButton;
+	public static int semesterDebt;
 	
 	public Semester(){
 		super();
@@ -27,7 +28,7 @@ public class Semester extends JPanel{
 		 this.add(logo, BorderLayout.NORTH);
 		
 		 JPanel fieldPanel = new JPanel();
-		 GridLayout fieldGrid = new GridLayout(5,2);
+		 GridLayout fieldGrid = new GridLayout(6,2);
 		 fieldPanel.setLayout(fieldGrid);
 		 tuition = new JLabel("Tution:", SwingConstants.CENTER);
 		 tft = new TextField("Enter Amount", 20);
@@ -39,6 +40,10 @@ public class Semester extends JPanel{
 		 tfs = new TextField("Enter Amount", SwingConstants.CENTER);
 		 dorm = new JLabel("Dorm Furnishing:", SwingConstants.CENTER);
 		 tfd = new TextField("Enter Amount", SwingConstants.CENTER);
+		 total = new JLabel("Total:", SwingConstants.CENTER);
+		 tftotal = new TextField("Click To Calculate Total", SwingConstants.CENTER);
+		 tftotal.setEditable(false);
+
 		 
 		 fieldPanel.add(tuition);
 		 fieldPanel.add(tft);
@@ -50,6 +55,8 @@ public class Semester extends JPanel{
 		 fieldPanel.add(tfs);
 		 fieldPanel.add(dorm);
 		 fieldPanel.add(tfd);
+		 fieldPanel.add(total);
+		 fieldPanel.add(tftotal);
 		 
 		JPanel buttonPanel = new JPanel();
 		GridLayout buttonGrid = new GridLayout(1,2);
@@ -106,13 +113,26 @@ public class Semester extends JPanel{
 	            	tfd.setText("$");
 	            }
 	        });
-		 
+		 tftotal.addFocusListener(new FocusListener() {
+	            public void focusLost(FocusEvent arg0) {
+	            }
+	            public void focusGained(FocusEvent arg0) {
+	            	tftotal.setText("$" + Integer.toString((Integer.parseInt(tft.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tfh.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tfb.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tfs.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tfd.getText().replaceAll( "[^\\d]", "" )))));
+	            	
+	            }
+	        });
 		 nextButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					Menu.setState(2);
+					semesterDebt = Integer.parseInt(tftotal.getText().replaceAll( "[^\\d]", "" ));
+					//System.out.println(semesterDebt);
 				}
 			});
-		 nextButton.addActionListener(new ActionListener(){
+		 backButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					Menu.setState(0);
 				}

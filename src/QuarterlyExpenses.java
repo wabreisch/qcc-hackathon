@@ -14,9 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class QuarterlyExpenses extends JPanel {
-	private JLabel quarterly, medical,travel,greek,bday;
-	private TextField tfm,tft,tfg,tff;
+	private JLabel quarterly, medical,travel,greek,bday,total;
+	private TextField tfm,tft,tfg,tff,tftotal;
 	private JButton nextButton, backButton;
+	public static int quarterDebt;
 	
 	public QuarterlyExpenses(){
 		
@@ -28,7 +29,7 @@ public class QuarterlyExpenses extends JPanel {
 		this.add(quarterly, BorderLayout.NORTH);
 		
 		JPanel fieldPanel = new JPanel();
-		GridLayout fieldGrid = new GridLayout(4,2);
+		GridLayout fieldGrid = new GridLayout(5,2);
 		fieldPanel.setLayout(fieldGrid);
 		medical = new JLabel("Medical/Dental:", SwingConstants.CENTER);
 		tfm = new TextField("Enter Amount", 20);
@@ -38,6 +39,10 @@ public class QuarterlyExpenses extends JPanel {
 		tfg = new TextField("Enter Amount", 20);
 		bday = new JLabel("Friends Birthday Presents:", SwingConstants.CENTER);
 		tff = new TextField("Enter Amount", 20);
+		total = new JLabel("Total:", SwingConstants.CENTER);
+		tftotal = new TextField("Click To Calculate Total", SwingConstants.CENTER);
+		tftotal.setEditable(false);
+
 		
 		fieldPanel.add(medical);
 		fieldPanel.add(tfm);
@@ -47,6 +52,8 @@ public class QuarterlyExpenses extends JPanel {
 		fieldPanel.add(tfg);
 		fieldPanel.add(bday);
 		fieldPanel.add(tff);
+		fieldPanel.add(total);
+		fieldPanel.add(tftotal);
 		
 		JPanel buttonPanel = new JPanel();
 		GridLayout buttonGrid = new GridLayout(1,2);
@@ -94,13 +101,26 @@ public class QuarterlyExpenses extends JPanel {
 	            	tff.setText("$");
 	            }
 	        });
+		 tftotal.addFocusListener(new FocusListener() {
+	            public void focusLost(FocusEvent arg0) {
+	            }
+	            public void focusGained(FocusEvent arg0) {
+	            	tftotal.setText("$" + Integer.toString((Integer.parseInt(tfm.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tft.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tfg.getText().replaceAll( "[^\\d]", "" ))+
+	            			Integer.parseInt(tff.getText().replaceAll( "[^\\d]", "" )))));
+	            	
+	            }
+	        });
 		 
 		 nextButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					Menu.setState(3);
+					quarterDebt = Integer.parseInt(tftotal.getText().replaceAll( "[^\\d]", "" ));
+					//System.out.println(quarterDebt);
 				}
 			});
-		 nextButton.addActionListener(new ActionListener(){
+		 backButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					Menu.setState(1);
 				}
