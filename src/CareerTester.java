@@ -2,11 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
+//A Basic Tester Class For the Career Manager to see if data is being used properly.
+//By Brian Gill for team Wishbay, October 24 2015 Hackathon @ Quinnipiac University.
+
 public class CareerTester {
 	
 	
-	static String major = "cheetos";
-	static double debt = 100000;
+	static String major = "software";
+	static double debt = 1000000;
 	static CareerManager myManager;
 	
 	public static void main(String[] args) {

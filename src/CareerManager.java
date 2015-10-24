@@ -2,11 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
+//A Basic Data Manager Class to manipulate career data types
+//The main bread-n-butter of the class is the debt to years formula, which compares how long a person would have to work in each prospective career to pay off their debt.
+//By Brian Gill for team Wishbay, October 24 2015 Hackathon @ Quinnipiac University.
+
 public class CareerManager {
 	
 	ArrayList<Career> myList;
 	ArrayList<Career> relevantList;
 	String debtParagraph = "Assuming that you use 10-20% of your salary to pay loans, " + "\n";
+	
+	String debtShorter; //These variables will be used to hold the value of how many years a person will have to work.
+	String debtShorterTwo; //They are used in the debtToYears method
 	
 	public CareerManager(){
 		
@@ -30,6 +37,7 @@ public class CareerManager {
 		
 		myList.add(new Career("Kanye", 30000000, "Lyrical wordsmith and architect of the English Language. So far ahead of the curve its a circle."));
 		this.addMajor("Kanye", "yeezus");
+
 	}
 	
 	public void addMajor(String CareerName, String newMajor){
@@ -58,7 +66,9 @@ public class CareerManager {
 	public String debtToYears(String major, double debt){
 		this.hasMajor(major);
 		for (Career debtFor: relevantList){
-			debtParagraph = (debtParagraph + "As a " + debtFor.getName() + " it will take " + String.format("%.3g%n",(debt/ (debtFor.getSalary()* .8))) + "-" + String.format("%.3g%n", (debt / (debtFor.getSalary()* .9))) +" years to pay off your debt." + "\n");
+			debtShorter = new String(String.format("%.3g%n",(debt/ (debtFor.getSalary()* .8))));
+			debtShorterTwo = new String(String.format("%.3g%n",(debt/ (debtFor.getSalary()* .9))));
+			debtParagraph = (debtParagraph + "As a " + debtFor.getName() + " it will take " + debtShorter + "-" + debtShorterTwo +" years to pay off your debt." + "\n");
 		}
 		return debtParagraph;
 	}

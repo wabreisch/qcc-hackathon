@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
+//A Basic data class to represent the viable careers a user may be interested in..
+//By Brian Gill for team Wishbay, October 24 2015 Hackathon @ Quinnipiac University.
+
 public class Career {
 	
 	String name;
