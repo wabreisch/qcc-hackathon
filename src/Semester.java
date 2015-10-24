@@ -142,5 +142,7 @@ public class Semester extends JPanel{
 		 
 		
 	}
-
+	public static int getSemester(){
+		return semesterDebt;
+	}
 }

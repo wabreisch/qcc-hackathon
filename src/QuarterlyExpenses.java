@@ -126,5 +126,8 @@ public class QuarterlyExpenses extends JPanel {
 				}
 			});
 	}
+	public static int getQuarter(){
+		return quarterDebt;
+	}
 	
 }

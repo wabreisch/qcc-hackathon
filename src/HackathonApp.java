@@ -75,6 +75,17 @@ public class HackathonApp extends JFrame {
 		this.remove(week);
 		}
 		
+		InfoTotals info = new InfoTotals();
+		this.setSize(400, 300);
+		this.add(info);
+		this.setVisible(false);
+		
+		while(menu.getState() == 6){
+		info.setVisible(true);
+		this.setVisible(true);
+		this.remove(income);
+		}
+		
 	
 //		this.setVisible(true);
 //		this.remove();

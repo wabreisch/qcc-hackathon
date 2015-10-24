@@ -156,4 +156,7 @@ public class Monthly extends JPanel {
 		 
 		
 	}
+	public static int getMonthly(){
+		return monthlyDebt;
+	}
 }

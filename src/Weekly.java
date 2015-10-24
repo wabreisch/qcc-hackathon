@@ -144,5 +144,8 @@ public class Weekly extends JPanel{
 		
 		
 	}
+	public static int getWeekly(){
+		return weeklyDebt;
+	}
 
 }
