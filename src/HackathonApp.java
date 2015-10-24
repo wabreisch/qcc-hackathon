@@ -86,7 +86,16 @@ public class HackathonApp extends JFrame {
 		this.remove(income);
 		}
 		
-	
+		CareerDebt career = new CareerDebt();
+		this.setSize(800,1000);
+		this.add(career);
+		this.setVisible(false);
+		
+		while(menu.getState() == 7){
+		career.setVisible(true);
+		this.setVisible(true);
+		this.remove(info);
+		}
 //		this.setVisible(true);
 //		this.remove();
 		}

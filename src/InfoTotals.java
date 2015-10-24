@@ -70,7 +70,8 @@ public class InfoTotals extends JPanel{
 		nextButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				Menu.setState(7);
-				majorChoice = new String((String) majorList.getSelectedItem());
+				majorChoice = new String((String) majorList.getSelectedItem()).toLowerCase();
+				System.out.println(majorChoice);
 			}
 		});
 		

@@ -7,9 +7,9 @@ import java.util.Collections;
 public class CareerManager {
 	ArrayList<Career> myList;
 	ArrayList<Career> relevantList;
-	String debtParagraph = "Assuming that you use 10-20% of your salary to pay loans, " + "\n";
-	String debtShorter; //These variables will be used to hold the value of how many years a person will have to work.
-	String debtShorterTwo; //They are used in the debtToYears method
+	String debtParagraph = "Assuming that you use 10-20% of your salary to pay loans" + "\n";
+	double debtShorter; //These variables will be used to hold the value of how many years a person will have to work.
+	double debtShorterTwo; //They are used in the debtToYears method
 	public CareerManager(){
 		myList = new ArrayList<Career>() ;
 		relevantList = new ArrayList<Career>() ;
@@ -49,10 +49,11 @@ public class CareerManager {
 	public String debtToYears(String major, double debt){
 		this.hasMajor(major);
 		for (Career debtFor: relevantList){
-			debtShorter = new String(String.format("%.3g%n",(debt/ (debtFor.getSalary()* .8))));
-			debtShorterTwo = new String(String.format("%.3g%n",(debt/ (debtFor.getSalary()* .9))));
+			debtShorter = (int)(debt/ (debtFor.getSalary()* .8));
+			debtShorterTwo = (int)(debt/ (debtFor.getSalary()* .9));
 			debtParagraph = (debtParagraph + "As a " + debtFor.getName() + " it will take " + debtShorter + "-" + debtShorterTwo +" years to pay off your debt." + "\n");
 		}
 		return debtParagraph;
 	}
+
 }
