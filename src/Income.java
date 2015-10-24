@@ -89,6 +89,7 @@ public class Income extends JPanel{
 		nextButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				Menu.setState(6);
+				incomeAmount = Integer.parseInt(tftotal.getText().replaceAll( "[^\\d]", "" ));
 			}
 		});
 		
@@ -97,5 +98,8 @@ public class Income extends JPanel{
 				Menu.setState(4);
 			}
 		});
+	}
+	public static int getIncome(){
+		return incomeAmount;
 	}
 }
