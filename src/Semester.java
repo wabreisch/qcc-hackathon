@@ -3,6 +3,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -14,7 +16,7 @@ import javax.swing.SwingConstants;
 public class Semester extends JPanel{
 	private JLabel logo, tuition,housing,books,supplies,dorm;
 	private TextField tft,tfh,tfb,tfs,tfd;
-	private JButton nextButton;
+	private JButton nextButton, backButton;
 	
 	public Semester(){
 		super();
@@ -49,17 +51,26 @@ public class Semester extends JPanel{
 		 fieldPanel.add(dorm);
 		 fieldPanel.add(tfd);
 		 
+		JPanel buttonPanel = new JPanel();
+		GridLayout buttonGrid = new GridLayout(1,2);
+		buttonPanel.setLayout(buttonGrid);
 		nextButton = new JButton("Continue");
-		nextButton.setPreferredSize(new Dimension(100,50));
 		nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		backButton = new JButton("Back");
+		backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		buttonPanel.add(backButton);
+		buttonPanel.add(nextButton);
+		this.add(buttonPanel, BorderLayout.SOUTH);
 		 
-		 this.add(fieldPanel, BorderLayout.CENTER);
-		 this.add(nextButton, BorderLayout.SOUTH);
+		this.add(fieldPanel, BorderLayout.CENTER);
+		 
 		 
 		 tft.addFocusListener(new FocusListener() {
 	            public void focusLost(FocusEvent arg0) {
 	            }
 	            public void focusGained(FocusEvent arg0) {
+	            	if(tft.getText().matches("Enter Amount"))
 	            	tft.setText("$");
 	            }
 	        });
@@ -67,6 +78,7 @@ public class Semester extends JPanel{
 	            public void focusLost(FocusEvent arg0) {
 	            }
 	            public void focusGained(FocusEvent arg0) {
+	            	if(tfh.getText().matches("Enter Amount"))
 	            	tfh.setText("$");
 	            }
 	        });
@@ -74,6 +86,7 @@ public class Semester extends JPanel{
 	            public void focusLost(FocusEvent arg0) {
 	            }
 	            public void focusGained(FocusEvent arg0) {
+	            	if(tfb.getText().matches("Enter Amount"))
 	            	tfb.setText("$");
 	            }
 	        });
@@ -81,6 +94,7 @@ public class Semester extends JPanel{
 	            public void focusLost(FocusEvent arg0) {
 	            }
 	            public void focusGained(FocusEvent arg0) {
+	            	if(tfs.getText().matches("Enter Amount"))
 	            	tfs.setText("$");
 	            }
 	        });
@@ -88,9 +102,22 @@ public class Semester extends JPanel{
 	            public void focusLost(FocusEvent arg0) {
 	            }
 	            public void focusGained(FocusEvent arg0) {
+	            	if(tfd.getText().matches("Enter Amount"))
 	            	tfd.setText("$");
 	            }
 	        });
+		 
+		 nextButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent event){
+					Menu.setState(2);
+				}
+			});
+		 nextButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent event){
+					Menu.setState(0);
+				}
+			});
+				
 		 
 		 
 		

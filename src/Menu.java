@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,14 +18,19 @@ public class Menu extends JPanel{
     
     super();
     setLayout(new BorderLayout());
-    logo = new JLabel("WishBay", SwingConstants.CENTER);
-	logo.setPreferredSize(new Dimension(100, 100));
+    
+    ImageIcon logoImage = new ImageIcon("/Users/mattfishman/Documents/workspace/HackAThon/Images/logo.png");
+    
+    logo = new JLabel(logoImage, SwingConstants.CENTER);
+	logo.setPreferredSize(new Dimension(400, 300));
+	
+	
 	this.add(logo, BorderLayout.NORTH);
 	
 	JPanel buttonPanel = new JPanel();
 	
 	startButton = new JButton("Get Started");
-	startButton.setPreferredSize(new Dimension(400,250));
+	startButton.setPreferredSize(new Dimension(200,50));
 	startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 	buttonPanel.add(startButton);
 	
@@ -33,7 +39,6 @@ public class Menu extends JPanel{
 	startButton.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent event){
 			setState(1);
-			System.out.println(state);
 		}
 	});
 		
@@ -45,4 +50,7 @@ public class Menu extends JPanel{
 	public static void setState(int state){
 		Menu.state = state;
 	}
+	
 }
+
+
