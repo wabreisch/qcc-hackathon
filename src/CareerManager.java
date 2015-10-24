@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Collections;
 
@@ -9,12 +7,19 @@ public class CareerManager {
 	ArrayList<Career> myList;
 	ArrayList<Career> relevantList;
 	public CareerManager(){
+		//Just some starter classes for a newly constructed manager
 		myList.add(new Career("Software Developer", 93350, "Develops or enhances software projects"));
 		myList.add(new Career("Video Game Designer", 83240, "Plans and develops software of video games."));
 		myList.add(new Career("Game Tester", 20000, "Sits around all day providing feedback on video games."));
 		myList.add(new Career("Software Architect", 102000, "Designs and coordinates complex software projects"));
 		myList.add(new Career("Kanye", 30000000, "Lyrical wordsmith and architect of the English Language. So far ahead of the curve its a circle."));
 
+	}
+	
+	public void addMajor(String CareerName, String newMajor){
+		for (Career careerFor: myList){
+			if (careerFor.getName() == CareerName) careerFor.addMajor(newMajor);
+		}
 	}
 	
 	public void addCareer(String name, int salary, String description){
@@ -29,7 +34,6 @@ public class CareerManager {
 		}
 		return relevantList;
 	}
-	
 	public ArrayList<Career> getList(){
 		return myList;
 	}
