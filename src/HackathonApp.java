@@ -1,5 +1,5 @@
 import java.awt.Component;
-import java.awt.Menu;
+
 
 import javax.swing.JFrame;
 
@@ -7,7 +7,7 @@ public class HackathonApp extends JFrame {
 	public HackathonApp(){
 	super("Hack-A-Thon Application");
 	Menu menu = new Menu();
-//	this.add(menu);
+	this.add(menu);
 	this.setVisible(true);
 	this.setSize(800,600);
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
