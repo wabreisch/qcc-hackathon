@@ -7,12 +7,20 @@ public class Career {
 	String name;
 	String description;
 	ArrayList<String> majors;
-	int salary;
+	double salary;
 	
-	public Career(String name, int salary, String description){
+	public Career(){
+		this.name = "nada";
+		this.salary = 0;
+		this.description = "nothing here";
+		this.majors = new ArrayList<String>();
+	}
+	
+	public Career(String name, double salary, String description){
 		this.name = name;
 		this.salary = salary;
 		this.description = description;
+		this.majors = new ArrayList<String>();
 	}
 
 	public ArrayList<String> getMajors(){
@@ -39,7 +47,7 @@ public class Career {
 		return name;
 	}
 	
-	public int getSalary(){
+	public double getSalary(){
 		return salary;
 	}
 
