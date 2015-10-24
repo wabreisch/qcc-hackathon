@@ -15,7 +15,7 @@ public class InfoTotals extends JPanel{
 	private JLabel info,debt,income, major,debtLabel,incomeLabel;
 	private JButton backButton, nextButton;
 	private String[] majors = {"Software", "Cheetos", "Yeezus"};
-	
+	public static String majorChoice;
 	
 	public InfoTotals(){
 		super();
@@ -41,7 +41,7 @@ public class InfoTotals extends JPanel{
 		incomeLabel = new JLabel("$" + Integer.toString(totalIncome), SwingConstants.LEFT);
 		
 		major = new JLabel("Select A Major!", SwingConstants.CENTER);
-		JComboBox majorList = new JComboBox(majors);
+		final JComboBox majorList = new JComboBox(majors);
 		
 		fieldPanel.add(debt);
 		fieldPanel.add(debtLabel);
@@ -70,6 +70,7 @@ public class InfoTotals extends JPanel{
 		nextButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				Menu.setState(7);
+				majorChoice = new String((String) majorList.getSelectedItem());
 			}
 		});
 		
